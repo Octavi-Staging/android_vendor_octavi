@@ -150,6 +150,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/octavi/prebuilt/common/etc/permissions/privapp-permissions-google-as.xml:product/etc/permissions/privapp-permissions-google-as.xml
 
+# Sounds
+include vendor/octavi/config/sounds.mk
+
 # Themes
 $(call inherit-product, vendor/octavi/config/themes.mk)
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
