@@ -34,9 +34,6 @@ PRODUCT_COPY_FILES += \
 	vendor/octavi/sounds/alarms/Neon.ogg:system/media/audio/alarms/Neon.ogg \
 	vendor/octavi/sounds/alarms/Nudge.ogg:system/media/audio/alarms/Nudge.ogg \
 	vendor/octavi/sounds/alarms/Orbit.ogg:system/media/audio/alarms/Orbit.ogg \
-	vendor/octavi/sounds/alarms/Osmium.ogg:system/media/audio/alarms/Osmium.ogg \
-	vendor/octavi/sounds/alarms/Oxygen.ogg:system/media/audio/alarms/Oxygen.ogg \
-	vendor/octavi/sounds/alarms/Platinum.ogg:system/media/audio/alarms/Platinum.ogg \
 	vendor/octavi/sounds/alarms/Rise.ogg:system/media/audio/alarms/Rise.ogg \
 	vendor/octavi/sounds/alarms/Rolling_fog.ogg:system/media/audio/alarms/Rolling_fog.ogg \
 	vendor/octavi/sounds/alarms/Spokes.ogg:system/media/audio/alarms/Spokes.ogg \
