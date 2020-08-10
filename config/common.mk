@@ -138,6 +138,12 @@ endif
 # Fonts
 include vendor/octavi/config/fonts.mk
 
+# Recovery
+ifneq ($(TARGET_USES_AOSP_RECOVERY),false)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.recovery_update=true
+endif
+
 # Smartspace
 PRODUCT_PACKAGES += \
     DeviceIntelligenceNetworkPrebuilt \
