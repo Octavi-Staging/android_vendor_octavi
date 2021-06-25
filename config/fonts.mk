@@ -54,6 +54,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Barlow-Bold.ttf \
     Barlow-Medium.ttf
+	
+#Custom packages
+PRODUCT_PACKAGES += \
+    FontGInterOverlay \
+    FontGoogleSansOverlay \
+    FontHarmonySansOverlay \
+    FontLinotteSourceOverlay \
+    FontManropeOverlay \
+    FontOnePlusSansOverlay \
+    FontOneplusSlateSourceOverlay
 
 # Customization overlays
 PRODUCT_PACKAGES += \
@@ -65,4 +75,6 @@ PRODUCT_PACKAGES += \
     FontVictorOverlay
 
 PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/octavi/fonts/prebuilt,$(TARGET_COPY_OUT_PRODUCT)/fonts) \
     vendor/octavi/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
+
