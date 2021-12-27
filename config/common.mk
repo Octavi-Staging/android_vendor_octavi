@@ -142,3 +142,6 @@ EXCLUDE_SYSTEMUI_TESTS := true
 # Themes
 $(call inherit-product, vendor/octavi/config/themes.mk)
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
+
+# Sepolicy
+$(call inherit-product, vendor/octavi/config/sepolicy.mk)
