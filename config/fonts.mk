@@ -97,7 +97,8 @@ PRODUCT_PACKAGES += \
     FontSonySketchSourceOverlay \
     FontStoropiaSourceOverlay \
     FontSurferSourceOverlay \
-    FontUbuntuSourceOverlay
+    FontUbuntuSourceOverlay \
+	 FontOppoSansOverlay
 
 # Customization overlays
 PRODUCT_PACKAGES += \
