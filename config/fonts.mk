@@ -99,7 +99,8 @@ PRODUCT_PACKAGES += \
     FontSurferSourceOverlay \
     FontUbuntuSourceOverlay \
     FontOppoSansOverlay \
-    FontNothiingDotOverlay
+    FontNothiingDotOverlay\
+    FontProductSansVHOverlay
 
 # Customization overlays
 PRODUCT_PACKAGES += \
