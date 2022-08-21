@@ -15,6 +15,7 @@
 # limitations under the License.
 
 # Versioning System
+ANDROID_VERSION := 13
 OCTAVI_NUM_VER := 4.0
 
 TARGET_PRODUCT_SHORT := $(subst octavi_,,$(OCTAVI_BUILD_TYPE))
