@@ -58,7 +58,6 @@ SOONG_CONFIG_octaviQcomVars += \
     supports_hw_fde_perf \
     no_camera_smooth_apis \
     uses_pre_uplink_features_netmgrd \
-    uses_qcom_bsp_legacy \
     uses_qti_camera_device
 
 # Only create display_headers_namespace var if dealing with UM platforms to avoid breaking build for all other platforms
@@ -82,7 +81,6 @@ SOONG_CONFIG_octaviQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE
 SOONG_CONFIG_octaviQcomVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_octaviQcomVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
 SOONG_CONFIG_octaviQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
-SOONG_CONFIG_octaviQcomVars_uses_qcom_bsp_legacy := $(TARGET_USES_QCOM_BSP_LEGACY)
 SOONG_CONFIG_octaviQcomVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
 SOONG_CONFIG_octaviQcomVars_no_camera_smooth_apis := $(TARGET_HAS_NO_CAMERA_SMOOTH_APIS)
 
