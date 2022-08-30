@@ -41,8 +41,7 @@ SOONG_CONFIG_octaviGlobalVars += \
     target_init_vendor_lib \
     target_ld_shim_libs \
     target_process_sdk_version_override \
-    target_surfaceflinger_udfps_lib \
-    uses_camera_parameter_lib
+    target_surfaceflinger_udfps_lib
 
 SOONG_CONFIG_NAMESPACES += octaviNvidiaVars
 SOONG_CONFIG_octaviNvidiaVars += \
@@ -56,8 +55,7 @@ SOONG_CONFIG_octaviQcomVars += \
     supports_hw_fde \
     supports_hw_fde_perf \
     no_camera_smooth_apis \
-    uses_pre_uplink_features_netmgrd \
-    uses_qti_camera_device
+    uses_pre_uplink_features_netmgrd
 
 # Only create display_headers_namespace var if dealing with UM platforms to avoid breaking build for all other platforms
 ifneq ($(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
@@ -98,7 +96,6 @@ SOONG_CONFIG_octaviGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB
 SOONG_CONFIG_octaviGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
 SOONG_CONFIG_octaviGlobalVars_target_process_sdk_version_override := $(TARGET_PROCESS_SDK_VERSION_OVERRIDE)
 SOONG_CONFIG_octaviGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
-SOONG_CONFIG_octaviGlobalVars_uses_camera_parameter_lib := $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY)
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_octaviQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
 else
