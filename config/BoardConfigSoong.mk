@@ -32,7 +32,6 @@ SOONG_CONFIG_octaviGlobalVars += \
     bootloader_message_offset \
     camera_needs_client_info \
     camera_needs_client_info_lib \
-    disable_postrender_cleanup \
     has_memfd_backport \
     needs_camera_boottime \
     needs_netd_direct_connect_rule \
@@ -63,7 +62,6 @@ SOONG_CONFIG_octaviQcomVars += \
 endif
 
 # Soong bool variables
-SOONG_CONFIG_octaviGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
 SOONG_CONFIG_octaviGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
 SOONG_CONFIG_octaviGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 SOONG_CONFIG_octaviGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
