@@ -33,7 +33,6 @@ SOONG_CONFIG_octaviGlobalVars += \
     camera_needs_client_info_lib \
     has_memfd_backport \
     needs_camera_boottime \
-    needs_netd_direct_connect_rule \
     target_alternative_futex_waiters \
     target_init_vendor_lib \
     target_ld_shim_libs \
@@ -62,7 +61,6 @@ endif
 # Soong bool variables
 SOONG_CONFIG_octaviGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
 SOONG_CONFIG_octaviGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
-SOONG_CONFIG_octaviGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
 SOONG_CONFIG_octaviGlobalVars_target_alternative_futex_waiters := $(TARGET_ALTERNATIVE_FUTEX_WAITERS)
 SOONG_CONFIG_octaviNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
 SOONG_CONFIG_octaviQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
