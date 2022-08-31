@@ -27,7 +27,7 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_RST="\033[0m"
 endif
 
-OCTAVI_TARGET_PACKAGE := $(PRODUCT_OUT)/OctaviOS-v$(OCTAVI_VERSION).zip
+OCTAVI_TARGET_PACKAGE := $(PRODUCT_OUT)/$(OCTAVI_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
