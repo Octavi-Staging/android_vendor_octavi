@@ -72,11 +72,6 @@ endif
 
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
 
-# Mark GRALLOC_USAGE_HW_2D as valid gralloc bit on legacy platforms that support it
-ifneq ($(filter msm8960 msm8952 $(B_FAMILY) $(B64_FAMILY) $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 10)
-endif
-
 # Mark GRALLOC_USAGE_EXTERNAL_DISP as valid gralloc bit
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 13)
 
