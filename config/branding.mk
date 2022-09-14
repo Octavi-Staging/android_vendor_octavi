@@ -17,9 +17,14 @@
 # Versioning System
 ANDROID_VERSION := 13
 OCTAVI_STATUS := 4.0
+OCTAVI_MAINTAINER ?= UNKNOWN
 
 ifndef OCTAVI_BUILD_TYPE
     OCTAVI_BUILD_TYPE := Unofficial
+endif
+
+ifndef OCTAVI_MAINTAINER
+    OCTAVI_MAINTAINER := Nobody
 endif
 
 TARGET_PRODUCT_SHORT := $(subst octavi_,,$(OCTAVI_BUILD_TYPE))
@@ -50,4 +55,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
   ro.octavi.status=$(OCTAVI_BUILD_TYPE) \
   ro.octavi.branding.version=$(OCTAVI_STATUS) \
   ro.modversion=$(OCTAVI_MOD_VERSION) \
-  ro.octavi.build.date=$(BUILD_DATE)
+  ro.octavi.build.date=$(BUILD_DATE) \
+  ro.octavi.maintainer=$(OCTAVI_MAINTAINER)
