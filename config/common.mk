@@ -88,11 +88,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/octavi/prebuilt/common/etc/sysconfig/quick_tap.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/quick_tap.xml
 
-# Gapps
-ifeq ($(WITH_GAPPS),true)
-$(call inherit-product, vendor/gms/products/gms.mk)
-endif
-
 # Include AOSP audio files
 include vendor/octavi/config/aosp_audio.mk
 

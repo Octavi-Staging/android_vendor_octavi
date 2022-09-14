@@ -18,6 +18,7 @@
 ANDROID_VERSION := 13
 OCTAVI_STATUS := 4.0
 OCTAVI_MAINTAINER ?= UNKNOWN
+OCTAVI_BUILDTYPE_VARIANT := VANILLA
 
 ifndef OCTAVI_BUILD_TYPE
     OCTAVI_BUILD_TYPE := Unofficial
@@ -25,6 +26,11 @@ endif
 
 ifndef OCTAVI_MAINTAINER
     OCTAVI_MAINTAINER := Nobody
+endif
+
+ifeq ($(WITH_GAPPS), true)
+    $(call inherit-product, vendor/gms/products/gms.mk)
+    OCTAVI_BUILDTYPE_VARIANT := GAPPS
 endif
 
 TARGET_PRODUCT_SHORT := $(subst octavi_,,$(OCTAVI_BUILD_TYPE))
@@ -43,7 +49,7 @@ endif
 # Set all versions
 BUILD_DATE :=  $(shell date  +%Y%m%d-%H%M)
 BUILD_TIME := $(shell date -u +%H%M)
-OCTAVI_VERSION := OctaviOS-v$(OCTAVI_STATUS)-$(OCTAVI_BUILD)-$(BUILD_DATE)-$(OCTAVI_BUILD_TYPE)
+OCTAVI_VERSION := OctaviOS-v$(OCTAVI_STATUS)-$(OCTAVI_BUILD)-$(BUILD_DATE)-$(OCTAVI_BUILDTYPE_VARIANT)-$(OCTAVI_BUILD_TYPE)
 OCTAVI_MOD_VERSION := $(ANDROID_VERSION)-$(OCTAVI_VERSION)
 ROM_FINGERPRINT := OCTAVI/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TIME)
 OCTAVI_DISPLAY_VERSION := $(OCTAVI_VERSION)
@@ -55,5 +61,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
   ro.octavi.status=$(OCTAVI_BUILD_TYPE) \
   ro.octavi.branding.version=$(OCTAVI_STATUS) \
   ro.modversion=$(OCTAVI_MOD_VERSION) \
+  ro.octavi.buildtypevariant=$(OCTAVI_BUILDTYPE_VARIANT) \
   ro.octavi.build.date=$(BUILD_DATE) \
   ro.octavi.maintainer=$(OCTAVI_MAINTAINER)
