@@ -5,29 +5,6 @@ PRODUCT_BRAND ?= OctaviOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.com.google.clientidbase=android-google
-else
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
-endif
-
-ifeq ($(TARGET_BUILD_VARIANT),eng)
-# Disable ADB authentication
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
-else
-# Enable ADB authentication
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
-
-# Enable one-handed mode
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.support_one_handed_mode=true
-
-# Disable extra StrictMode features on all non-engineering builds
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
-endif
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/octavi/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -76,10 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,vendor/octavi/prebuilt/fonts,$(TARGET_COPY_OUT_PRODUCT)/fonts)
 
-# Enforce privapp-permissions whitelist
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.control_privapp_permissions=log
-
 # Game Overlay
 PRODUCT_COPY_FILES += \
     vendor/octavi/prebuilt/common/etc/sysconfig/game_overlay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/game_overlay.xml
@@ -123,10 +96,6 @@ ifeq ($(USE_PIXEL_CHARGER),true)
 PRODUCT_PACKAGES += \
     product_charger_res_images
 endif
-
-# Storage manager
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.storage_manager.enabled=true
 
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
