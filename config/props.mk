@@ -1,4 +1,4 @@
-# Copyright (C) 2019-2022 The OctaviOS Project
+# Copyright (C) 2018-2020 ArrowOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Spoof fingerprint for Google Play Services and SafetyNet
 ifeq ($(PRODUCT_OVERRIDE_GMS_FINGERPRINT),)
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.build.gms_fingerprint=google/coral/coral:12/SP2A.220305.012/8177914:user/release-keys
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.build.gms_fingerprint=Xiaomi/dipper/dipper:8.1.0/OPM1.171019.011/V9.5.5.0.OEAMIFA:user/release-keys
 else
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.build.gms_fingerprint=$(PRODUCT_OVERRIDE_GMS_FINGERPRINT)
 endif
