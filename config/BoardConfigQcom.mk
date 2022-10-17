@@ -165,10 +165,14 @@ TARGET_HALS_PATH ?= $(QCOM_SOONG_NAMESPACE)
 
 # Add display-commonsys and display-commonsys-intf to PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-    PRODUCT_SOONG_NAMESPACES += \
-        vendor/qcom/opensource/commonsys/display \
-	vendor/qcom/opensource/commonsys-intf/display \
-        vendor/qcom/opensource/display
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys/display \
+    vendor/qcom/opensource/commonsys-intf/display
+
+ifeq ($(filter $(UM_5_10_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/display
+endif
 
 endif
 
