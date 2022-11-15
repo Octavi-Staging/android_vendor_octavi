@@ -138,6 +138,9 @@ endif
 # Fonts
 include vendor/octavi/config/fonts.mk
 
+# Don't compile SystemUITests
+EXCLUDE_SYSTEMUI_TESTS := true
+
 # Smartspace
 PRODUCT_PACKAGES += \
     DeviceIntelligenceNetworkPrebuilt \
