@@ -138,6 +138,15 @@ endif
 # Fonts
 include vendor/octavi/config/fonts.mk
 
+# Smartspace
+PRODUCT_PACKAGES += \
+    DeviceIntelligenceNetworkPrebuilt \
+    DevicePersonalizationPrebuiltPixel2021 \
+    PixelConfigOverlayCommon
+
+PRODUCT_COPY_FILES += \
+    vendor/octavi/prebuilt/common/etc/permissions/privapp-permissions-google-as.xml:product/etc/permissions/privapp-permissions-google-as.xml
+
 # Themes
 $(call inherit-product, vendor/octavi/config/themes.mk)
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
