@@ -43,3 +43,19 @@ PRODUCT_PACKAGES += \
     AndroidVividThemeOverlay \
     AndroidSnowPaintDropThemeOverlay \
     AndroidEspressoThemeOverlay
+
+# Lockscreen clock fonts
+PRODUCT_PACKAGES += \
+    ClockFontAdventProOverlay \
+    ClockFontBigNoodleTiltingOverlay \
+    ClockFontCherrySwashOverlay \
+    ClockFontHeadlineOverlay \
+    ClockFontRoadRageOverlay \
+    ClockFontSnowstormOverlay \
+    ClockFontViburOverlay \
+    ClockFontAlienLeagueOverlay \
+    ClockFontBikoOverlay \
+    ClockFontGinoraSansOverlay \
+    ClockFontRivieraOverlay \
+    ClockFontSedgwickAveOverlay \
+    ClockFontUnionOverlay
