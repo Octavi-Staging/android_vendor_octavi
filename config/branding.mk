@@ -27,8 +27,8 @@ ifndef OCTAVI_MAINTAINER
     OCTAVI_MAINTAINER := Unknown
 endif
 
-ifeq ($(WITH_GAPPS), true)
-    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
+ifeq ($(WITH_GMS), true)
+    $(call inherit-product, vendor/gms/products/gms.mk)
     OCTAVI_BUILDTYPE_VARIANT := GAPPS
 endif
 
