@@ -4,8 +4,10 @@ PRODUCT_PACKAGES += \
 
 # Octavi packages
 PRODUCT_PACKAGES += \
+    GameSpace \
     ota \
     Updater \
+    SimpleDeviceConfig \
     ThemePicker
 
 # Statusbar Icons
