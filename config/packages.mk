@@ -4,6 +4,7 @@ PRODUCT_PACKAGES += \
 
 # Octavi packages
 PRODUCT_PACKAGES += \
+    Aperture \
     GameSpace \
     ota \
     Updater \
