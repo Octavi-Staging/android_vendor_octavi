@@ -142,7 +142,7 @@ EXCLUDE_SYSTEMUI_TESTS := true
 # Smartspace
 PRODUCT_PACKAGES += \
     DeviceIntelligenceNetworkPrebuilt \
-    DevicePersonalizationPrebuiltPixel2022 \
+    DevicePersonalizationPrebuiltPixel2021 \
     PixelConfigOverlayCommon
 
 PRODUCT_COPY_FILES += \
