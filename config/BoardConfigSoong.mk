@@ -32,6 +32,7 @@ SOONG_CONFIG_octaviGlobalVars += \
     additional_gralloc_10_usage_bits \
     disable_bluetooth_le_read_buffer_size_v2 \
     disable_bluetooth_le_set_host_feature \
+    gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
     camera_needs_client_info \
     camera_needs_client_info_lib \
@@ -66,6 +67,7 @@ SOONG_CONFIG_octaviQcomVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_octaviGlobalVars_gralloc_handle_has_custom_content_md_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE)
 SOONG_CONFIG_octaviGlobalVars_aapt_version_code := $(shell date -u +%Y%m%d)
 SOONG_CONFIG_octaviGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_octaviGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
@@ -85,6 +87,7 @@ SOONG_CONFIG_octaviQcomVars_no_camera_smooth_apis := $(TARGET_HAS_NO_CAMERA_SMOO
 
 # Set default values
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
+TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
 TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY ?= libcamera_parameters
