@@ -28,6 +28,7 @@ $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
 
 SOONG_CONFIG_NAMESPACES += octaviGlobalVars
 SOONG_CONFIG_octaviGlobalVars += \
+    aapt_version_code \
     additional_gralloc_10_usage_bits \
     disable_bluetooth_le_read_buffer_size_v2 \
     disable_bluetooth_le_set_host_feature \
@@ -65,6 +66,7 @@ SOONG_CONFIG_octaviQcomVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_octaviGlobalVars_aapt_version_code := $(shell date -u +%Y%m%d)
 SOONG_CONFIG_octaviGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_octaviGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
 SOONG_CONFIG_octaviGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
