@@ -29,6 +29,8 @@
 #   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
 #   TARGET_KERNEL_CLANG_VERSION        = Clang prebuilts version, optional, defaults to clang-stable
 #   TARGET_KERNEL_CLANG_PATH           = Clang prebuilts path, optional
+#   TARGET_CLANG_WITH_GNU_BINUTILS     = Compile kernel with GNU binutils from
+#                                        Clang prebuilts, defaults to false
 #   TARGET_KERNEL_NEW_GCC_COMPILE      = Compile kernel with newer version GCC, defaults to false
 #   TARGET_KERNEL_LLVM_BINUTILS        = Use LLVM binutils, defaults to true
 #   TARGET_KERNEL_VERSION              = Reported kernel version in top level kernel
@@ -93,9 +95,16 @@ KERNEL_MAKE_FLAGS :=
 KERNEL_MAKE_FLAGS += -j$(shell getconf _NPROCESSORS_ONLN)
 
 TOOLS_PATH_OVERRIDE := \
-    LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-extras/$(HOST_PREBUILT_TAG)/lib:$$LD_LIBRARY_PATH \
     PERL5LIB=$(BUILD_TOP)/prebuilts/tools-extras/common/perl-base
 
+ifeq ($(TARGET_CLANG_WITH_GNU_BINUTILS),true)
+# arm64 toolchain
+KERNEL_TOOLCHAIN_arm64 := $(TARGET_KERNEL_CLANG_PATH)/bin
+KERNEL_TOOLCHAIN_PREFIX_arm64 := aarch64-linux-gnu-
+# arm toolchain
+KERNEL_TOOLCHAIN_arm := $(TARGET_KERNEL_CLANG_PATH)/bin
+KERNEL_TOOLCHAIN_PREFIX_arm := arm-linux-gnueabi-
+else
 GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)
 # arm64 toolchain
 KERNEL_TOOLCHAIN_arm64 := $(GCC_PREBUILTS)/aarch64/aarch64-linux-android-4.9/bin
@@ -106,6 +115,7 @@ KERNEL_TOOLCHAIN_PREFIX_arm := arm-linux-androidkernel-
 # x86 toolchain
 KERNEL_TOOLCHAIN_x86 := $(GCC_PREBUILTS)/x86/x86_64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX_x86 := x86_64-linux-android-
+endif
 
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(strip $(TARGET_KERNEL_CROSS_COMPILE_PREFIX))
 ifneq ($(TARGET_KERNEL_CROSS_COMPILE_PREFIX),)
@@ -149,11 +159,7 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),false)
   endif
 endif
 
-ifeq ($(HOST_OS),darwin)
-  KERNEL_MAKE_FLAGS += HOSTCFLAGS="-I$(BUILD_TOP)/external/elfutils/libelf -I/usr/local/opt/openssl/include" HOSTLDFLAGS="-L/usr/local/opt/openssl/lib -fuse-ld=lld"
-else
-  KERNEL_MAKE_FLAGS += CPATH="/usr/include:/usr/include/x86_64-linux-gnu" HOSTLDFLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -fuse-ld=lld"
-endif
+KERNEL_MAKE_FLAGS += CPATH="/usr/include:/usr/include/x86_64-linux-gnu" HOSTLDFLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -fuse-ld=lld"
 
 # Set the full path to the clang command and LLVM binutils
 KERNEL_MAKE_FLAGS += HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang
