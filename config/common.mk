@@ -139,9 +139,6 @@ include vendor/octavi/config/fonts.mk
 # Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
-# Sounds
-include vendor/octavi/config/sounds.mk
-
 # Themes
 $(call inherit-product, vendor/octavi/config/themes.mk)
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
