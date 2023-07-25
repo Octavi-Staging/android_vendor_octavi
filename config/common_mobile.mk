@@ -1,7 +1,7 @@
 # Inherit common mobile Lineage stuff
 $(call inherit-product, vendor/octavi/config/common.mk)
 
-ifneq ($(USE_GAPPS),true)
+ifneq ($(WITH_GAPPS),true)
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.notification_sound=Popcorn.ogg \

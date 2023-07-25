@@ -11,7 +11,7 @@ PRODUCT_PACKAGES += \
     messaging \
     Stk
 
-ifneq ($(USE_GAPPS),true)
+ifneq ($(WITH_GAPPS),true)
 # Default ringtone
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.ringtone=The_big_adventure.ogg
