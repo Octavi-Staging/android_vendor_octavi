@@ -27,11 +27,11 @@ ifndef OCTAVI_MAINTAINER
     OCTAVI_MAINTAINER := Unknown
 endif
 
-ifeq ($(WITH_GAPPS), true)
-    $(call inherit-product-if-exists, vendor/google/gms/config.mk)
-    OCTAVI_BUILDTYPE_VARIANT := GAPPS
-endif
-$(call inherit-product-if-exists, vendor/google/pixel/config.mk)
+#ifeq ($(WITH_GAPPS), true)
+#    $(call inherit-product-if-exists, vendor/google/gms/config.mk)
+#    OCTAVI_BUILDTYPE_VARIANT := GAPPS
+#endif
+#$(call inherit-product-if-exists, vendor/google/pixel/config.mk)
 
 TARGET_PRODUCT_SHORT := $(subst octavi_,,$(OCTAVI_BUILD_TYPE))
 

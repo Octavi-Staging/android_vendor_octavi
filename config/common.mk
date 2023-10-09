@@ -117,31 +117,32 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/octavi/overlay/common
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/octavi/config/partner_gms.mk
 
-ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
-PRODUCT_PACKAGES += \
-    UdfpsResources
-endif
+#ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
+#PRODUCT_PACKAGES += \
+#    UdfpsResources
+#endif
 
 # Face Unlock
-TARGET_FACE_UNLOCK_SUPPORTED ?= true
-ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
-PRODUCT_PACKAGES += \
-    FaceUnlockService
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
-endif
+#TARGET_FACE_UNLOCK_SUPPORTED ?= true
+#ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
+#PRODUCT_PACKAGES += \
+#    FaceUnlockService
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
+#PRODUCT_COPY_FILES += \
+#    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
+#endif
 
 # Fonts
-include vendor/octavi/config/fonts.mk
+#include vendor/octavi/config/fonts.mk
 
 # Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
 # Themes
-$(call inherit-product, vendor/octavi/config/themes.mk)
+#$(call inherit-product, vendor/octavi/config/themes.mk)
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 # Sepolicy
-$(call inherit-product, vendor/octavi/config/sepolicy.mk)
+#$(call inherit-product, vendor/octavi/config/sepolicy.mk)
