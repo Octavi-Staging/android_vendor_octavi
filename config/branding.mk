@@ -15,8 +15,8 @@
 # limitations under the License.
 
 # Versioning System
-ANDROID_VERSION := 13
-OCTAVI_STATUS := 4.8
+ANDROID_VERSION := 14
+OCTAVI_STATUS := 5.0
 OCTAVI_BUILDTYPE_VARIANT := VANILLA
 
 ifndef OCTAVI_BUILD_TYPE
