@@ -7,6 +7,3 @@ endef
 
 # Include board/platform macros
 include vendor/octavi/build/core/utils.mk
-
-# Include vendor platform definitions
-include vendor/octavi/build/core/vendor/*.mk
