@@ -117,6 +117,9 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/octavi/overlay/common
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/octavi/config/partner_gms.mk
 
+# Inherit SystemUI Clocks if they exist
+$(call inherit-product-if-exists, vendor/SystemUIClocks/product.mk)
+
 #ifeq ($(EXTRA_UDFPS_ANIMATIONS),true)
 #PRODUCT_PACKAGES += \
 #    UdfpsResources
