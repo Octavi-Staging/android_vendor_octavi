@@ -1,5 +1,5 @@
-# Inherit common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common Octavi stuff
+$(call inherit-product, vendor/octavi/config/common.mk)
 
-# Inherit Lineage car device tree
-$(call inherit-product, device/lineage/car/lineage_car.mk)
+# Inherit Octavi car device tree
+$(call inherit-product, device/octavi/car/octavi_car.mk)

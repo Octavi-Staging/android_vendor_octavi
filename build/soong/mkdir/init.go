@@ -1,4 +1,4 @@
-// Copyright 2025 The LineageOS Project.
+// Copyright 2025 The octavios Project.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import (
 	"android/soong/android"
 )
 
-var pctx = android.NewPackageContext("lineage/soong/mkdir")
+var pctx = android.NewPackageContext("octavi/soong/mkdir")
 
 func init() {
 	RegisterBuildComponents(android.InitRegistrationContext)

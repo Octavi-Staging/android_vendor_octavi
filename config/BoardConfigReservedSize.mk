@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023-2024 The LineageOS Project
+# SPDX-FileCopyrightText: 2023-2024 The octavios Project
 # SPDX-License-Identifier: Apache-2.0
 
 ifeq ($(PRODUCT_VIRTUAL_AB_OTA),true)
