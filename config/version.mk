@@ -1,47 +1,56 @@
-PRODUCT_VERSION_MAJOR = 23
-PRODUCT_VERSION_MINOR = 0
+# OctaviOS Versioning
+PRODUCT_VERSION_MAJOR := 16
+PRODUCT_VERSION_MINOR := 0
 
-ifeq ($(OCTAVI_VERSION_APPEND_TIME_OF_DAY),true)
-    OCTAVI_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    OCTAVI_BUILD_DATE := $(shell date -u +%Y%m%d)
+OCTAVI_BUILD_TYPE ?= UNOFFICIAL
+
+# Get current UTC date components
+OCTAVI_DATE_YEAR := $(shell date -u +%Y)
+OCTAVI_DATE_MONTH := $(shell date -u +%m)
+OCTAVI_DATE_DAY := $(shell date -u +%d)
+OCTAVI_DATE_HOUR := $(shell date -u +%H)
+OCTAVI_DATE_MINUTE := $(shell date -u +%M)
+
+# Final build date in YYYYMMDD-HHMM format
+OCTAVI_BUILD_DATE := $(OCTAVI_DATE_YEAR)$(OCTAVI_DATE_MONTH)$(OCTAVI_DATE_DAY)-$(OCTAVI_DATE_HOUR)$(OCTAVI_DATE_MINUTE)
+
+# Target product short name
+TARGET_PRODUCT_SHORT := $(subst octavi_,,$(OCTAVI_BUILD))
+
+# OFFICIAL device check
+ifeq ($(OCTAVI_BUILD_TYPE), OFFICIAL)
+  OCTAVI_OFFICIAL_LIST := $(shell cat vendor/octavi/octavi.devices)
+  ifeq ($(filter $(OCTAVI_BUILD), $(OCTAVI_OFFICIAL_LIST)), $(OCTAVI_BUILD))
+    IS_OFFICIAL := true
+    OCTAVI_BUILD_TYPE := OFFICIAL
+  endif
+  ifneq ($(IS_OFFICIAL), true)
+    OCTAVI_BUILD_TYPE := UNOFFICIAL
+    $(error Device is not official "$(OCTAVI_BUILD)")
+  endif
 endif
 
-# Set OCTAVI_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
-
-ifndef OCTAVI_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "OCTAVI_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^OCTAVI_||g')
-        OCTAVI_BUILDTYPE := $(RELEASE_TYPE)
-    endif
+# Extra version suffix if unofficial
+ifeq ($(OCTAVI_BUILD_TYPE), UNOFFICIAL)
+  ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
+    OCTAVI_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
+  endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(OCTAVI_BUILDTYPE)),)
-    OCTAVI_BUILDTYPE := UNOFFICIAL
-    OCTAVI_EXTRAVERSION :=
-endif
+# Complete version suffix
+OCTAVI_VERSION_SUFFIX := $(OCTAVI_BUILD_DATE)-$(OCTAVI_BUILD_TYPE)$(OCTAVI_EXTRAVERSION)-$(OCTAVI_BUILD)
 
-ifeq ($(OCTAVI_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        OCTAVI_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-OCTAVI_VERSION_SUFFIX := $(OCTAVI_BUILD_DATE)-$(OCTAVI_BUILDTYPE)$(OCTAVI_EXTRAVERSION)-$(OCTAVI_BUILD)
-
-# Internal version
+# Internal and Display versions
 OCTAVI_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(OCTAVI_VERSION_SUFFIX)
-OCTAVI_VERSION_PROP := sixteen
+OCTAVI_DISPLAY_VERSION := OctaviOS-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(OCTAVI_BUILD_TYPE)
+OCTAVI_FINGERPRINT := OctaviOS/$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)/$(TARGET_PRODUCT_SHORT)/$(OCTAVI_BUILD_DATE)
 
-# Display version
-OCTAVI_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(OCTAVI_VERSION_SUFFIX)
-
-# octavios version properties
+# OctaviOS Version Props
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.octavi.version=$(OCTAVI_VERSION) \
     ro.octavi.display.version=$(OCTAVI_DISPLAY_VERSION) \
     ro.octavi.build.date=$(OCTAVI_BUILD_DATE) \
     ro.octavi.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.octavi.releasetype=$(OCTAVI_BUILDTYPE)
+    ro.octavi.releasetype=$(OCTAVI_BUILD_TYPE) \
+    ro.octavi.fingerprint=$(OCTAVI_FINGERPRINT) \
+    ro.octavi.device=$(OCTAVI_BUILD)
